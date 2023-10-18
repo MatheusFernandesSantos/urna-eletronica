@@ -18,11 +18,11 @@ function urnaEletronica() {
     let votobranco = 0;
     let votonulo = 0;
     let decisao = "N";
-    let senha = 501040;
-
+    let senha = 192837;
+    let confirmavotonulo 
 
     do {
-        opcao = parseInt(prompt(`Digite a opção \n|1|${nome1}\n|2|${nome2}\n|3|${nome3}\n|4| Voto Branco\n|5| Voto Nulo\n Para Encerrar, Digite sua Senha`
+        opcao = parseInt(prompt(`Digite a opção \n|1|${nome1}\n|2|${nome2}\n|3|${nome3}\n|4| Voto Branco\n Para Encerrar, Digite sua Senha`
         ));
 
         contador++;
@@ -39,14 +39,18 @@ function urnaEletronica() {
         } else if (opcao == 4) {
             console.log("Seu voto foi computado em Branco")
             votobranco++;
-        } else if (opcao == 5) {
-            console.log("Seu voto foi computado em Nulo")
-            votonulo++;
         } else if (opcao == senha) {
             decisao = prompt("Se realmente deseja encerrar a votação digite 'S' para sim e 'N' para não")
             if (decisao == "N" && "n") {
+
             }
-        }
+        } else 
+
+            confirmavotonulo = confirm("Seu voto foi invalido")
+            if (confirmavotonulo) {
+                console.log("Seu voto computado em nulo")
+                votonulo++;
+            }
 
     } while (decisao !== "S" && decisao !== "s");
 
@@ -58,19 +62,22 @@ function urnaEletronica() {
     console.log("Este é o total de votos", totaldevotos)
 
     console.log("Este é o total de votos do", nome1, candidato1)
-    console.log("Este é o percentual", (candidato1 / totaldevotos) * 100)
+    console.log("Este é o percentual", ((candidato1 / totaldevotos * 100).toFixed(2)) + "%")
 
     console.log("Este é o total de votos do", nome2, candidato2)
-    console.log("Este é o percentual", (candidato2 / totaldevotos) * 100)
+    console.log("Este é o percentual", ((candidato2 / totaldevotos * 100).toFixed(2)) + "%")
 
     console.log("Este é o total de votos do", nome3, candidato3)
-    console.log("Este é o percentual", (candidato3 / totaldevotos) * 100)
+    console.log("Este é o percentual", ((candidato3 / totaldevotos * 100).toFixed(2)) + "%")
+
 
     console.log("Este é o total de votos em brancos", votobranco)
-    console.log("Este é o percentual", (votobranco / totaldevotos) * 100)
+    console.log("Este é o percentual", ((votobranco / totaldevotos * 100).toFixed(2)) + "%")
+
 
     console.log("Este é o total de votos nulos", votonulo)
-    console.log("Este é o percentual", (votonulo / totaldevotos) * 100)
+    console.log("Este é o percentual", ((votonulo / totaldevotos * 100).toFixed(2)) + "%")
+
 
 
     if (candidato1 > candidato2 && candidato1 > candidato3) {
