@@ -2,31 +2,24 @@ function urnaEletronica() {
 
     // Declaração das variáveis
     let opcao;
-    let contador = 0;
-
     let nome1;
     let nome2;
     let nome3;
-
-    console.log('Início do programa');
-
-    console.clear();
-    console.log('** CONFIGURAÇÃO DA URNA **');
-
+    let contador = 0;
     let candidato1 = 0;
     let candidato2 = 0;
     let candidato3 = 0;
     let votobranco = 0;
     let votonulo = 0;
-    let decisao = "N";
-    let senha =123456;
-    let confirmavotonulo;
-    let nomeGanhador;
-    let votosGanhador;
-    let ganhador = true;
+    let decisao = "N" & "n";
+    let senha = 123456;
+    let confirmavoto
 
-    senhaMesario = parseInt(prompt('Digite sua senha de mésário:'));
-    
+
+    console.log('** CONFIGURAÇÃO DA URNA **');
+
+    senha = parseInt(prompt('Digite sua senha de mésário:'));
+
     do {
         nome1 = prompt('Digite o nome do candidato 1:');
         nome2 = prompt('Digite o nome do candidato 2:');
@@ -47,49 +40,65 @@ function urnaEletronica() {
         contador++;
 
         if (opcao == 1) {
-            console.log("Seu voto foi computado para: ", nome1)
-            candidato1++;
-
+            confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome1 + ('\n\nDeseja proseguir?'));
+            if (confirmavoto) {
+                console.log("Seu voto foi computado para: ", nome1)
+                candidato1++;
+            }
         } else if (opcao == 2) {
-            console.log("Seu voto foi computado para: ", nome2)
-            candidato2++;
-
+            confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome2 + ('\n\nDeseja proseguir?'));
+            if (confirmavoto) {
+                console.log("Seu voto foi computado para: ", nome2)
+                candidato2++;
+            }
         } else if (opcao == 3) {
-            console.log("Seu voto foi computado para: ", nome3)
-            candidato3++;
-
+            confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome3 + ('\n\nDeseja proseguir?'));
+            if (confirmavoto) {
+                console.log("Seu voto foi computado para: ", nome3)
+                candidato3++;
+            }
         } else if (opcao == 4) {
-            console.log("Seu voto foi computado em Branco")
-            votobranco++;
-
+            confirmavoto = confirm('ATENÇÃO: seu voto ficará em Branco. Deseja Proceguir?');
+            if (confirmavoto) {
+                console.log("Seu voto foi computado em Branco")
+                votobranco++;
+            }
         } else if (opcao == senha) {
             decisao = prompt("Se realmente deseja encerrar a votação digite 'S' para sim e 'N' para não")
-            if (decisao == "N" && "n") {
+            if (decisao == "N" && decisao == "n") {
             }
 
-        } else
-            confirmavotonulo = confirm("Seu voto foi invalido")
-        if (confirmavotonulo) {
-            console.log("Seu voto computado em nulo")
-            votonulo++;
+
+        } else {
+            confirm("Seu voto foi invalido")
+            if (confirm("Seu voto foi invalido")) {
+                console.log("Seu voto computado em nulo")
+                votonulo++;
+            } else {
+                contador--;
+            }
         }
 
-    } while (decisao !== "S" && decisao !== "s");
+    } while (decisao !== "S" && decisao !== "s") console.clear();
 
-    contador = contador - 1;
-    console.log("Contagem: ", contador);
-
-    // Saída para o usuário: boletim de urna
-    console.clear();
-    console.log('** BOLETIM DE URNA **');
-    console.log('Total de votos: ' + totalVotos);
 
     // se houver votação
-    if (totalVotos > 0) {
+    var totaldevotos = (candidato1 + candidato2 + candidato3 + votobranco + votonulo);
 
+    if (totaldevotos > 0) {
+
+        // Contagem dos Votos
+
+        contador--;
+
+        console.log('Contagem', contador);
+        console.log('Voto computado para Candidato1: ', candidato1);
+        console.log('Voto computado para Candidato2: ', candidato2);
+        console.log('Voto computado para Candidato3: ', candidato3);
+        console.log('Voto em Branco computado', votobranco);
+        console.log('Voto Nulo computado', votonulo);
 
         // Total de Votos e Porcetagem de cada candidato.
-        var totaldevotos = (candidato1 + candidato2 + candidato3 + votobranco + votonulo)
         console.log("** BOLETIM DE URNA")
         console.log("Este é o total de votos", totaldevotos)
 
@@ -114,7 +123,6 @@ function urnaEletronica() {
             console.log("O vencedor é ", nome1)
             console.log("O total de votos é", candidato1 + votobranco)
             console.log("A porcentagem de votos desse candidato é: ", votobranco + candidato1)
-
         } else if (candidato2 > candidato1 && candidato2 > candidato3) {
             console.log("O vencedor é ", nome2)
             console.log("O total de votos é", candidato2 + votobranco)
@@ -129,17 +137,12 @@ function urnaEletronica() {
         }
 
         // exibição do ganhador
-        console.log('-------');
-        if (ganhador) {
-            console.log('O ganhador desta urna foi ' + nomeGanhador + ' com ' + votosGanhador + ' votos (' + (votosGanhador / totalVotos * 100) + '%)');
-        } else {
-            console.log('Não houve ganhador nesta urna (empate entre 2 ou mais candidatos');
-        }
-
     } else {
-        console.log('Não houve votação  nesta urna');
+        console.clear();
+        console.log('Não houve votação nesta urna');
+        console.log('Total de Votos: ' + totaldevotos);
     }
 
-    console.log('Fim do programa');
+    console.log("Fim do Programa");
 }
 
