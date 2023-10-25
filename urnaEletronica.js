@@ -13,10 +13,15 @@ function urnaEletronica() {
     let votonulo = 0;
     let decisao = "N" & "n";
     let senha = 123456;
-    let confirmavoto
+    let confirmavoto;
+    let data = new Date();
 
+    function dataFim (){
+        const data = new Date ();
+        return data;
+    }
 
-    console.log('** CONFIGURAÇÃO DA URNA **');
+    console.log('Iniciando o Programa às:' + data().toLocaleString());
 
     senha = parseInt(prompt('Digite sua senha de mésário:'));
 
@@ -70,7 +75,7 @@ function urnaEletronica() {
 
 
         } else {
-            confirm("Seu voto foi invalido")
+            
             if (confirm("Seu voto foi invalido")) {
                 console.log("Seu voto computado em nulo")
                 votonulo++;
@@ -138,11 +143,11 @@ function urnaEletronica() {
 
         // exibição do ganhador
     } else {
-        console.clear();
         console.log('Não houve votação nesta urna');
         console.log('Total de Votos: ' + totaldevotos);
     }
 
     console.log("Fim do Programa");
+    console.log('Terminado o Programa às:' + dataFim().toLocaleString());
 }
 
