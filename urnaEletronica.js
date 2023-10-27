@@ -14,77 +14,91 @@ function urnaEletronica() {
     let decisao = "N" & "n";
     let senha = 123456;
     let confirmavoto;
-    let data = new Date();
+    let candidatos = [
+        [13, "Loki"],
+        [17, "Thor"],
+        [22, "Baldur"],
+        [40, "Odin"],
+        [35, "Sylvi"],
+        [0, "Voto em Branco"]
+    ]
 
-    function dataFim (){
-        const data = new Date ();
+    for (i = 0; i < candidatos.length; i++) {
+        document.getElementById("candidatos").innerHTML += `<p>Número do(a) candidato(a) ${candidatos[i][0]}, Nome do(a) candidato(a) ${candidatos[i][1]}</p>`
+    }
+    
+    
+    function dataFim() {
+        const data = new Date();
         return data;
     }
-
-    console.log('Iniciando o Programa às:' + data().toLocaleString());
-
+    
+    console.log('Iniciando o Programa às:' + dataFim().toLocaleString());
+    
     senha = parseInt(prompt('Digite sua senha de mésário:'));
+    
+    
+    
+    // do {
+    //     nome1 = prompt('Digite o nome do candidato 1:');
+    //     nome2 = prompt('Digite o nome do candidato 2:');
+    //     nome3 = prompt('Digite o nome do candidato 3:');
 
-    do {
-        nome1 = prompt('Digite o nome do candidato 1:');
-        nome2 = prompt('Digite o nome do candidato 2:');
-        nome3 = prompt('Digite o nome do candidato 3:');
+    //     console.log('** NOMES DOS CANDIDATOS **');
+    //     console.log('Candidato 1: ' + nome1);
+    //     console.log('Candidato 2: ' + nome2);
+    //     console.log('Candidato 3: ' + nome3);
 
-        console.log('** NOMES DOS CANDIDATOS **');
-        console.log('Candidato 1: ' + nome1);
-        console.log('Candidato 2: ' + nome2);
-        console.log('Candidato 3: ' + nome3);
+    // } while (!confirm('Se os nomes dos candidatos estão corretos, clique OK para continuar ou CANCELAR para voltar e digitar novamente'));
 
-    } while (!confirm('Se os nomes dos candidatos estão corretos, clique OK para continuar ou CANCELAR para voltar e digitar novamente'));
+    // // Opções para votos
+    // do {
+    //     opcao = parseInt(prompt(`Digite a opção \n|1|${nome1}\n|2|${nome2}\n|3|${nome3}\n|4| Voto Branco\n Para Encerrar, Digite sua Senha`
+    //     ));
 
-    // Opções para votos
-    do {
-        opcao = parseInt(prompt(`Digite a opção \n|1|${nome1}\n|2|${nome2}\n|3|${nome3}\n|4| Voto Branco\n Para Encerrar, Digite sua Senha`
-        ));
+    //     contador++;
 
-        contador++;
-
-        if (opcao == 1) {
-            confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome1 + ('\n\nDeseja proseguir?'));
-            if (confirmavoto) {
-                console.log("Seu voto foi computado para: ", nome1)
-                candidato1++;
-            }
-        } else if (opcao == 2) {
-            confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome2 + ('\n\nDeseja proseguir?'));
-            if (confirmavoto) {
-                console.log("Seu voto foi computado para: ", nome2)
-                candidato2++;
-            }
-        } else if (opcao == 3) {
-            confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome3 + ('\n\nDeseja proseguir?'));
-            if (confirmavoto) {
-                console.log("Seu voto foi computado para: ", nome3)
-                candidato3++;
-            }
-        } else if (opcao == 4) {
-            confirmavoto = confirm('ATENÇÃO: seu voto ficará em Branco. Deseja Proceguir?');
-            if (confirmavoto) {
-                console.log("Seu voto foi computado em Branco")
-                votobranco++;
-            }
-        } else if (opcao == senha) {
-            decisao = prompt("Se realmente deseja encerrar a votação digite 'S' para sim e 'N' para não")
-            if (decisao == "N" && decisao == "n") {
-            }
+    //     if (opcao == 1) {
+    //         confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome1 + ('\n\nDeseja proseguir?'));
+    //         if (confirmavoto) {
+    //             console.log("Seu voto foi computado para: ", nome1)
+    //             candidato1++;
+    //         }
+    //     } else if (opcao == 2) {
+    //         confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome2 + ('\n\nDeseja proseguir?'));
+    //         if (confirmavoto) {
+    //             console.log("Seu voto foi computado para: ", nome2)
+    //             candidato2++;
+    //         }
+    //     } else if (opcao == 3) {
+    //         confirmavoto = confirm('ATENÇÃO: seu voto será para: ' + nome3 + ('\n\nDeseja proseguir?'));
+    //         if (confirmavoto) {
+    //             console.log("Seu voto foi computado para: ", nome3)
+    //             candidato3++;
+    //         }
+    //     } else if (opcao == 4) {
+    //         confirmavoto = confirm('ATENÇÃO: seu voto ficará em Branco. Deseja Proceguir?');
+    //         if (confirmavoto) {
+    //             console.log("Seu voto foi computado em Branco")
+    //             votobranco++;
+    //         }
+    //     } else if (opcao == senha) {
+    //         decisao = prompt("Se realmente deseja encerrar a votação digite 'S' para sim e 'N' para não")
+    //         if (decisao == "N" && decisao == "n") {
+    //         }
 
 
-        } else {
-            
-            if (confirm("Seu voto foi invalido")) {
-                console.log("Seu voto computado em nulo")
-                votonulo++;
-            } else {
-                contador--;
-            }
-        }
+    //     } else {
 
-    } while (decisao !== "S" && decisao !== "s") console.clear();
+    //         if (confirm("Seu voto foi invalido")) {
+    //             console.log("Seu voto computado em nulo")
+    //             votonulo++;
+    //         } else {
+    //             contador--;
+    //         }
+    //     }
+
+    while (decisao !== "S" && decisao !== "s") console.clear();
 
 
     // se houver votação
